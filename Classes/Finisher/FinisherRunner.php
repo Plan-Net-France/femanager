@@ -5,6 +5,7 @@ namespace In2code\Femanager\Finisher;
 use In2code\Femanager\Domain\Model\User;
 use In2code\Femanager\Domain\Service\FinisherService;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class FinisherRunner
@@ -14,13 +15,13 @@ class FinisherRunner
 
     /**
      * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-     * @inject
+     * @Inject
      */
     protected $objectManager;
 
     /**
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @Inject
      */
     protected $configurationManager;
 

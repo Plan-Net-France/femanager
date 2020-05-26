@@ -5,6 +5,7 @@ namespace In2code\Femanager\Domain\Service;
 use In2code\Femanager\Domain\Model\User;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class SendParametersService
@@ -14,7 +15,7 @@ class SendParametersService
 
     /**
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @Inject
      */
     protected $configurationManager;
 

@@ -6,6 +6,7 @@ use In2code\Femanager\Domain\Model\User;
 use In2code\Femanager\Finisher\AbstractFinisher;
 use In2code\Femanager\Utility\StringUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class FinisherService
@@ -63,7 +64,7 @@ class FinisherService
 
     /**
      * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-     * @inject
+     * @Inject
      */
     protected $objectManager = null;
 

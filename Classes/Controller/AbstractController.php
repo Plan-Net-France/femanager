@@ -22,6 +22,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class AbstractController
@@ -31,31 +32,31 @@ abstract class AbstractController extends ActionController
 
     /**
      * @var \In2code\Femanager\Domain\Repository\UserRepository
-     * @inject
+     * @Inject
      */
     protected $userRepository;
 
     /**
      * @var \In2code\Femanager\Domain\Repository\UserGroupRepository
-     * @inject
+     * @Inject
      */
     protected $userGroupRepository;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
-     * @inject
+     * @Inject
      */
     protected $persistenceManager;
 
     /**
      * @var \In2code\Femanager\Domain\Service\SendMailService
-     * @inject
+     * @Inject
      */
     protected $sendMailService;
 
     /**
      * @var \In2code\Femanager\Finisher\FinisherRunner
-     * @inject
+     * @Inject
      */
     protected $finisherRunner;
 

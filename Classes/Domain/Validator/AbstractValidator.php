@@ -9,6 +9,7 @@ use In2code\Femanager\Utility\ObjectUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class GeneralValidator
@@ -21,7 +22,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase
      * userRepository
      *
      * @var \In2code\Femanager\Domain\Repository\UserRepository
-     * @inject
+     * @Inject
      */
     protected $userRepository;
 
@@ -29,7 +30,7 @@ abstract class AbstractValidator extends AbstractValidatorExtbase
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @Inject
      */
     public $configurationManager;
 

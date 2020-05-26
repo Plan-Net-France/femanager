@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace In2code\Femanager\ViewHelpers\Validation;
 
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class IsRequiredFieldViewHelper
@@ -13,7 +14,7 @@ class IsRequiredFieldViewHelper extends AbstractValidationViewHelper
 
     /**
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @Inject
      */
     protected $configurationManager;
 

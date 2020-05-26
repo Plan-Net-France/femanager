@@ -4,6 +4,7 @@ namespace In2code\Femanager\Finisher;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class SendParametersFinisher
@@ -15,13 +16,13 @@ class SendParametersFinisher extends AbstractFinisher implements FinisherInterfa
      * Inject a complete new content object
      *
      * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
-     * @inject
+     * @Inject
      */
     protected $contentObject;
 
     /**
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @Inject
      */
     protected $configurationManager;
 

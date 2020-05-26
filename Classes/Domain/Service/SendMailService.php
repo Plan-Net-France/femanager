@@ -8,6 +8,7 @@ use In2code\Femanager\Utility\ObjectUtility;
 use In2code\Femanager\Utility\TemplateUtility;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class SendMailService
@@ -26,7 +27,7 @@ class SendMailService
      * SignalSlot Dispatcher
      *
      * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
-     * @inject
+     * @Inject
      */
     protected $signalSlotDispatcher;
 

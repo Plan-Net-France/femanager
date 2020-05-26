@@ -5,6 +5,7 @@ namespace In2code\Femanager\Domain\Validator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator as AbstractValidatorExtbase;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
  * Class PasswordValidator
@@ -16,7 +17,7 @@ class PasswordValidator extends AbstractValidatorExtbase
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @Inject
      */
     public $configurationManager;
 
