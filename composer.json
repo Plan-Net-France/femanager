@@ -24,7 +24,7 @@
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
   "require": {
-    "typo3/cms-core": ">=8.7.0 <9.6.0"
+    "typo3/cms-core": ">=8.7.0 <10.5.0"
   },
   "replace": {
     "femanager": "self.version",
@@ -39,7 +39,7 @@
     "behat/mink-goutte-driver": "^1.2",
     "behat/mink-selenium2-driver": "^1.3",
     "se/selenium-server-standalone": "^2.0",
-    "typo3/cms-extbase": "^8.7.10"
+    "typo3/cms-extbase": "^8.7.10 || ^9.5.0 || ^10.4.0"
   },
   "autoload": {
     "psr-4": {
