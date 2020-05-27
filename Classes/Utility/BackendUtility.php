@@ -157,8 +157,7 @@ class BackendUtility
         $sysPageObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Domain\\Repository\\PageRepository');
         $TSObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\TemplateService');
         $TSObj->tt_track = 0;
-        $TSObj->init();
-        $TSObj->runThroughTemplates(GeneralUtility::makeInstance(RootlineUtility::class, $pageUid));
+        $TSObj->runThroughTemplates(GeneralUtility::makeInstance(RootlineUtility::class, $pageUid)->get());
         $TSObj->generateConfig();
 
         return $TSObj->setup;

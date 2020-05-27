@@ -373,7 +373,7 @@ abstract class AbstractController extends ActionController
     {
         $this->controllerContext = $this->buildControllerContext();
         $this->user = UserUtility::getCurrentUser();
-        $this->contentObject = $this->configurationManager->getContentObjectRenderer();
+        $this->contentObject = $this->configurationManager->getContentObject();
         $this->pluginVariables = $this->request->getArguments();
         $this->allConfig = $this->configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK

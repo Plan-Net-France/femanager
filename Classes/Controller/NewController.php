@@ -15,6 +15,7 @@ use In2code\Femanager\Utility\UserUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 
@@ -45,9 +46,9 @@ class NewController extends AbstractController
      * action create
      *
      * @param User $user
-     * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-     * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
-     * @validate $user In2code\Femanager\Domain\Validator\CaptchaValidator
+     * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+     * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
+     * @Validate("In2code\Femanager\Domain\Validator\CaptchaValidator", param="user")
      * @return void
      */
     public function createAction(User $user)

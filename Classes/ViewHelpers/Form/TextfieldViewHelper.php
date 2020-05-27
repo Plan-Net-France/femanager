@@ -37,7 +37,7 @@ class TextfieldViewHelper extends OriginalTextfieldViewHelper
     protected function getValueFromTypoScript()
     {
         $controllerName = strtolower($this->renderingContext->getControllerContext()->getRequest()->getControllerName());
-        $contentObject = $this->configurationManager->getContentObjectRenderer();
+        $contentObject = $this->configurationManager->getContentObject();
         $typoScript = $this->configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
         );

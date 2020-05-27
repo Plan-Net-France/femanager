@@ -257,8 +257,8 @@ EditController.php:
 		 * action update
 		 *
 		 * @param In2code\Femanagerextended\Domain\Model\User $user
-		 * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-		 * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
+		 * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+		 * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
 		 * @return void
 		 */
 		public function updateAction(\In2code\Femanagerextended\Domain\Model\User $user) {
@@ -279,8 +279,8 @@ NewController.php:
 		 * action create
 		 *
 		 * @param In2code\Femanagerextended\Domain\Model\User $user
-		 * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-		 * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
+		 * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+		 * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
 		 * @return void
 		 */
 		public function createAction(\In2code\Femanagerextended\Domain\Model\User $user) {
@@ -308,8 +308,8 @@ EditController.php:
 		 * action update
 		 *
 		 * @param In2code\Femanagerextended\Domain\Model\User $user
-		 * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-		 * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
+		 * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+		 * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
 		 * @return void
 		 */
 		public function updateAction($user) {
@@ -330,8 +330,8 @@ NewController.php:
 		 * action create
 		 *
 		 * @param In2code\Femanagerextended\Domain\Model\User $user
-		 * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-		 * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
+		 * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+		 * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
 		 * @return void
 		 */
 		public function createAction($user) {

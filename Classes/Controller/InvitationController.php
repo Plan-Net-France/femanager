@@ -12,6 +12,7 @@ use In2code\Femanager\Utility\StringUtility;
 use In2code\Femanager\Utility\UserUtility;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 
 /**
  * Class InvitationController
@@ -35,9 +36,9 @@ class InvitationController extends AbstractController
      * action create
      *
      * @param User $user
-     * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-     * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
-     * @validate $user In2code\Femanager\Domain\Validator\CaptchaValidator
+     * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+     * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
+     * @Validate("In2code\Femanager\Domain\Validator\CaptchaValidator", param="user")
      * @return void
      */
     public function createAction(User $user)
@@ -144,8 +145,8 @@ class InvitationController extends AbstractController
      * action update
      *
      * @param \In2code\Femanager\Domain\Model\User $user
-     * @validate $user In2code\Femanager\Domain\Validator\ServersideValidator
-     * @validate $user In2code\Femanager\Domain\Validator\PasswordValidator
+     * @Validate("In2code\Femanager\Domain\Validator\ServersideValidator", param="user")
+     * @Validate("In2code\Femanager\Domain\Validator\PasswordValidator", param="user")
      * @return void
      */
     public function updateAction($user)
