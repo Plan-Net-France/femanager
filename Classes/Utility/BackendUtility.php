@@ -2,9 +2,11 @@
 declare(strict_types=1);
 namespace In2code\Femanager\Utility;
 
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Utility\BackendUtility as BackendUtilityCore;
 use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -41,7 +43,7 @@ class BackendUtility
         if ($addReturnUrl) {
             $uriParameters['returnUrl'] = GeneralUtility::getIndpEnv('REQUEST_URI');
         }
-        return BackendUtilityCore::getModuleUrl('record_edit', $uriParameters);
+        return GeneralUtility::makeInstance(UriBuilder::class)->buildUriFromRoute('record_edit', $uriParameters);
     }
 
     /**
@@ -66,7 +68,7 @@ class BackendUtility
             $uriParameters['returnUrl'] = GeneralUtility::getIndpEnv('REQUEST_URI');
             // @codeCoverageIgnoreEnd
         }
-        return BackendUtilityCore::getModuleUrl('record_edit', $uriParameters);
+        return GeneralUtility::makeInstance(UriBuilder::class)->buildUriFromRoute('record_edit', $uriParameters);
     }
 
     /**
@@ -108,10 +110,7 @@ class BackendUtility
                     $pageIdentifier,
                     $typeNum
                 );
-                $GLOBALS['TSFE']->connectToDB();
-                $GLOBALS['TSFE']->initFEuser();
                 $GLOBALS['TSFE']->determineId();
-                $GLOBALS['TSFE']->initTemplate();
                 $GLOBALS['TSFE']->getConfigArray();
                 $GLOBALS['TSFE']->settingLanguage();
                 return true;
@@ -155,14 +154,13 @@ class BackendUtility
     public static function loadTS($pageUid = null)
     {
         $pageUid = ($pageUid && \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($pageUid)) ? $pageUid : \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
-        $sysPageObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+        $sysPageObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Domain\\Repository\\PageRepository');
         $TSObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\TemplateService');
         $TSObj->tt_track = 0;
         $TSObj->init();
-        $TSObj->runThroughTemplates($sysPageObj->getRootLine($pageUid));
+        $TSObj->runThroughTemplates(GeneralUtility::makeInstance(RootlineUtility::class, $pageUid));
         $TSObj->generateConfig();
 
         return $TSObj->setup;
     }
 }
-

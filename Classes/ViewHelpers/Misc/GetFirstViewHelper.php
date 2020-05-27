@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace In2code\Femanager\ViewHelpers\Misc;
 
-use TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
+use TYPO3Fluid\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
 
 /**
  * Class GetFirstViewHelper

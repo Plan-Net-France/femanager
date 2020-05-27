@@ -4,6 +4,7 @@ namespace In2code\Femanager\Utility;
 
 use In2code\Femanager\Domain\Repository\UserGroupRepository;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -92,11 +93,7 @@ abstract class AbstractUtility
      */
     protected static function getExtensionConfiguration(): array
     {
-        $configuration = [];
-        if (!empty($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['femanager'])) {
-            $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['femanager']);
-        }
-        return $configuration;
+        return GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('backend');
     }
 
     /**

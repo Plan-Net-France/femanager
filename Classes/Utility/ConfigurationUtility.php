@@ -75,8 +75,8 @@ class ConfigurationUtility extends AbstractUtility
      */
     public static function isBackendModuleFilterUserConfirmation(): bool
     {
-        return BackendUserUtility::getBackendUserAuthentication()->getTSConfigVal(
-            'tx_femanager.UserBackend.confirmation.filter.userConfirmation'
+        return (BackendUserUtility::getBackendUserAuthentication()->getTSConfig()
+            ['tx_femanager.']['UserBackend.']['confirmation.']['filter.']['userConfirmation'] ?? '0'
         ) === '1';
     }
 
@@ -86,8 +86,8 @@ class ConfigurationUtility extends AbstractUtility
      */
     public static function IsResendUserConfirmationRequestActive(): bool
     {
-        return BackendUserUtility::getBackendUserAuthentication()->getTSConfigVal(
-            'tx_femanager.UserBackend.confirmation.ResendUserConfirmationRequest'
+        return (BackendUserUtility::getBackendUserAuthentication()->getTSConfig()
+            ['tx_femanager.']['UserBackend.']['confirmation.']['ResendUserConfirmationRequest'] ?? '0'
         ) === '1';
     }
 }

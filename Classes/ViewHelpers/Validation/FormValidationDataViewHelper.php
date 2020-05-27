@@ -24,8 +24,8 @@ class FormValidationDataViewHelper extends AbstractValidationViewHelper
         $additionalAttributes = $this->arguments['additionalAttributes'];
 
         if ($settings !== []) {
-            GeneralUtility::deprecationLog(
-                'Settings should not be filled any more in field partials. Pls update your femanager partial files.'
+            trigger_error(
+                'Settings should not be filled any more in field partials. Pls update your femanager partial files.', E_USER_DEPRECATED
             );
         }
         $validationService = ObjectUtility::getObjectManager()->get(

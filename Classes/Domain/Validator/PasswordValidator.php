@@ -125,7 +125,7 @@ class PasswordValidator extends AbstractValidatorExtbase
             'Femanager',
             'Pi1'
         );
-        $this->cObj = $this->configurationManager->getContentObject();
+        $this->cObj = $this->configurationManager->getContentObjectRenderer();
         $this->piVars = GeneralUtility::_GP('tx_femanager_pi1');
         $this->actionName = $this->piVars['__referrer']['@action'];
     }

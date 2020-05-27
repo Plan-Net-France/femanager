@@ -48,7 +48,7 @@ class SelectViewHelper extends OriginalSelectViewHelper
         // set preselection from TypoScript
         if (empty($selectedValue)) {
             $controllerName = strtolower($this->renderingContext->getControllerContext()->getRequest()->getControllerName());
-            $contentObject = $this->configurationManager->getContentObject();
+            $contentObject = $this->configurationManager->getContentObjectRenderer();
             $typoScript = $this->configurationManager->getConfiguration(
                 ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
             );

@@ -123,6 +123,6 @@ class SendParametersService
     protected function initialize(User $user)
     {
         $this->properties = $user->_getCleanProperties();
-        $this->contentObject = $this->configurationManager->getContentObject();
+        $this->contentObject = $this->configurationManager->getContentObjectRenderer();
     }
 }
