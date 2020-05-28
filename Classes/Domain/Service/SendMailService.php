@@ -148,8 +148,7 @@ class SendMailService
             ->setTo($receiver)
             ->setFrom($sender)
             ->setSubject($subject)
-            ->setCharset(FrontendUtility::getCharset())
-            ->setBody($this->getMailBody($template, $variables), 'text/html');
+            ->html($this->getMailBody($template, $variables));
     }
 
     /**

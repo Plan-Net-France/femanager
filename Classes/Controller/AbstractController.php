@@ -287,9 +287,9 @@ abstract class AbstractController extends ActionController
             $this->config[$action . '.'][$category . '.']
         )
         ) {
-            $target = $this->contentObject->cObjGetSingle(
+            $target = intval($this->contentObject->cObjGetSingle(
                 $this->config[$action . '.'][$category],
-                $this->config[$action . '.'][$category . '.']
+                $this->config[$action . '.'][$category . '.'])
             );
         }
 

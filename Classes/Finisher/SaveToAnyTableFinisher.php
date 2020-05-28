@@ -27,7 +27,7 @@ class SaveToAnyTableFinisher extends AbstractFinisher implements FinisherInterfa
     protected $objectManager;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Service\TypoScriptService
+     * @var \TYPO3\CMS\Core\TypoScript\TypoScriptService
      * @Inject
      */
     protected $typoScriptService;

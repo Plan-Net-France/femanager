@@ -4,6 +4,7 @@ namespace In2code\Femanager\Domain\Validator;
 
 use In2code\Femanager\Domain\Model\User;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
+use TYPO3\CMS\Extbase\Validation\Error;
 
 /**
  * Class ServersideValidator
@@ -93,6 +94,16 @@ class ServersideValidator extends AbstractValidator
     }
 
     /**
+     * @param $message
+     * @param $fieldName
+     * @return void
+     */
+    protected function addPropertyError($message, $fieldName)
+    {
+        $this->result->forProperty($fieldName)->addError(new Error((string)$message, 0));
+    }
+
+    /**
      * @param $validationSetting
      * @param $value
      * @param $fieldName
@@ -101,7 +112,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkRequiredValidation($validationSetting, $value, $fieldName)
     {
         if ($validationSetting === '1' && !$this->validateRequired($value)) {
-            $this->addError('validationErrorRequired', $fieldName);
+            $this->addPropertyError('validationErrorRequired', $fieldName);
             $this->isValid = false;
         }
     }
@@ -115,7 +126,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkEmailValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && $validationSetting === '1' && !$this->validateEmail($value)) {
-            $this->addError('validationErrorEmail', $fieldName);
+            $this->addPropertyError('validationErrorEmail', $fieldName);
             $this->isValid = false;
         }
     }
@@ -129,7 +140,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkMinValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && !$this->validateMin($value, $validationSetting)) {
-            $this->addError('validationErrorMin', $fieldName);
+            $this->addPropertyError('validationErrorMin', $fieldName);
             $this->isValid = false;
         }
     }
@@ -143,7 +154,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkMaxValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && !$this->validateMax($value, $validationSetting)) {
-            $this->addError('validationErrorMax', $fieldName);
+            $this->addPropertyError('validationErrorMax', $fieldName);
             $this->isValid = false;
         }
     }
@@ -157,7 +168,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkIntOnlyValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && $validationSetting === '1' && !$this->validateInt($value)) {
-            $this->addError('validationErrorInt', $fieldName);
+            $this->addPropertyError('validationErrorInt', $fieldName);
             $this->isValid = false;
         }
     }
@@ -171,7 +182,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkLetterOnlyValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && $validationSetting === '1' && !$this->validateLetters($value)) {
-            $this->addError('validationErrorLetters', $fieldName);
+            $this->addPropertyError('validationErrorLetters', $fieldName);
             $this->isValid = false;
         }
     }
@@ -189,7 +200,7 @@ class ServersideValidator extends AbstractValidator
             $validationSetting === '1' &&
             !$this->validateUniquePage($value, $fieldName, $user)
         ) {
-            $this->addError('validationErrorUniquePage', $fieldName);
+            $this->addPropertyError('validationErrorUniquePage', $fieldName);
             $this->isValid = false;
         }
     }
@@ -207,7 +218,7 @@ class ServersideValidator extends AbstractValidator
             $validationSetting === '1' &&
             !$this->validateUniqueDb($value, $fieldName, $user)
         ) {
-            $this->addError('validationErrorUniqueDb', $fieldName);
+            $this->addPropertyError('validationErrorUniqueDb', $fieldName);
             $this->isValid = false;
         }
     }
@@ -221,7 +232,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkMustIncludeValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && !$this->validateMustInclude($value, $validationSetting)) {
-            $this->addError('validationErrorMustInclude', $fieldName);
+            $this->addPropertyError('validationErrorMustInclude', $fieldName);
             $this->isValid = false;
         }
     }
@@ -235,7 +246,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkMustNotIncludeValidation($value, $validationSetting, $fieldName)
     {
         if (!empty($value) && !$this->validateMustNotInclude($value, $validationSetting)) {
-            $this->addError('validationErrorMustNotInclude', $fieldName);
+            $this->addPropertyError('validationErrorMustNotInclude', $fieldName);
             $this->isValid = false;
         }
     }
@@ -249,7 +260,7 @@ class ServersideValidator extends AbstractValidator
     protected function checkInListValidation($value, $validationSetting, $fieldName)
     {
         if (!$this->validateInList($value, $validationSetting)) {
-            $this->addError('validationErrorInList', $fieldName);
+            $this->addPropertyError('validationErrorInList', $fieldName);
             $this->isValid = false;
         }
     }
@@ -266,7 +277,7 @@ class ServersideValidator extends AbstractValidator
         if (method_exists($user, 'get' . ucfirst($validationSetting))) {
             $valueToCompare = $user->{'get' . ucfirst($validationSetting)}();
             if (!$this->validateSameAs($value, $valueToCompare)) {
-                $this->addError('validationErrorSameAs', $fieldName);
+                $this->addPropertyError('validationErrorSameAs', $fieldName);
                 $this->isValid = false;
             }
         }
@@ -283,7 +294,7 @@ class ServersideValidator extends AbstractValidator
     {
         if (method_exists($this, 'validate' . ucfirst($validation))) {
             if (!$this->{'validate' . ucfirst($validation)}($value, $validationSetting)) {
-                $this->addError('validationError' . ucfirst($validation), $fieldName);
+                $this->addPropertyError('validationError' . ucfirst($validation), $fieldName);
                 $this->isValid = false;
             }
         }
